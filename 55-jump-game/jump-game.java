@@ -15,16 +15,24 @@ class Solution
             {
                 return false;
             }
-            if(nums[i]>jumps) 
+            if(i==0)
             {
-            jumps=nums[i]-1;
+                jumps=nums[i];
             }
-            else 
+            else if(nums[i]>=jumps && jumps!=0) 
+            {
+            jumps=nums[i];
+            }
+            else
             {
             jumps-=1;
+            if(jumps<0)
+            {
+                return false;
             }
-
+            }
         }
+
     return true;
     }
 
