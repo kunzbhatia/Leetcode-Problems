@@ -17,13 +17,13 @@ class Solution
             }
             if(nums[i]>jumps) 
             {
-            jumps=nums[i];
-            jumps-=1;
+            jumps=nums[i]-1;
             }
             else 
             {
             jumps-=1;
             }
+
         }
     return true;
     }
