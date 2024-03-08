@@ -8,31 +8,19 @@ class Solution
     public boolean canJump(int[] nums) 
     {
         int n=nums.length;
-        int jumps=0;
+        int jumps=1;
         for(int i=0;i<n;i++)
         {
+            jumps--;
             if (jumps<0)
             {
                 return false;
             }
-            if(i==0)
-            {
-                jumps=nums[i];
-            }
-            else if(nums[i]>=jumps && jumps!=0) 
+            if(nums[i]>jumps) 
             {
             jumps=nums[i];
             }
-            else
-            {
-            jumps-=1;
-            if(jumps<0)
-            {
-                return false;
-            }
-            }
         }
-
     return true;
     }
 
