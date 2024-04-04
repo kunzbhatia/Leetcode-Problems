@@ -4,17 +4,17 @@ class Solution {
         StringBuilder sb=new StringBuilder();
         Stack<Character> st=new Stack<>();
 
-        for(int i=0;i<s.length();i++)
+        for(char c : s.toCharArray())
         {
-            if(s.charAt(i)=='(')
+            if(c =='(')
             {
-                if(st.size()>0) sb.append(s.charAt(i));
-                st.push(s.charAt(i));
+                if(st.size()>0) sb.append(c);
+                st.push(c);
             }
             else
             {
                 st.pop();
-                if(st.size()>0) sb.append(s.charAt(i));
+                if(st.size()>0) sb.append(c);
             }
         }
         return sb.toString();
