@@ -4,11 +4,15 @@ class Solution {
         int result = 0;
         int i = 0;
 
-        while (miss <= n) {
-            if (i < nums.length && nums[i] <= miss) {
+        while (miss <= n) 
+        {
+            if (i < nums.length && nums[i] <= miss) 
+            {
                 miss += nums[i];
                 i++;
-            } else {
+            } 
+            else 
+            {
                 miss += miss;
                 result++;
             }
