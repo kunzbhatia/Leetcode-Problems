@@ -27,11 +27,11 @@ class Solution {
         curr[0]=Math.max(prices[i]+after2[1],0 + after1[0]);  
 
         //after2=after1;
-        System.arraycopy(after1,0,after2,0,2);
+        // System.arraycopy(after1,0,after2,0,2); OR
+        after2=after1.clone();
         //after1=curr;
-        System.arraycopy(curr,0,after1,0,2);
-
-        
+        // System.arraycopy(curr,0,after1,0,2); OR
+        after1=curr.clone();
 
         }
 
