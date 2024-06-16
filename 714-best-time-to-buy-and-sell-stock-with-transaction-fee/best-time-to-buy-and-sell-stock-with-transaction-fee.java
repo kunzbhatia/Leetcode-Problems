@@ -24,9 +24,11 @@ class Solution {
 
         for(int i=days-1;i>=0;i--)
         {
-            currBuy=Math.max(-prices[i]-fee+aheadNotBuy,0+aheadBuy);
+            //Buy
+            currBuy=Math.max(-prices[i]+aheadNotBuy,0+aheadBuy);
 
-            currNotBuy=Math.max(prices[i]+aheadBuy,0+aheadNotBuy);
+            //Sell
+            currNotBuy=Math.max(prices[i]-fee+aheadBuy,0+aheadNotBuy);
 
             aheadBuy=currBuy;
             aheadNotBuy=currNotBuy;
