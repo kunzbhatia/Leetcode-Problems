@@ -3,39 +3,43 @@ class Solution {
     {
          int days=prices.length;
          int profit=0;
-         int[][][]dp=new int[days+1][2][k+1];
+         int[][] dp=new int[days+1][2*k+1];
 
-         for(int[][] rr:dp)
-         {
-             for(int[] row:rr)
-             {
+        //  for(int[][] rr:dp)
+        //  {
+        //      for(int[] row:rr)
+        //      {
+        //         Arrays.fill(row,0);
+        //      }
+        //  }
+
+        for(int[] row: dp)
+            {
                 Arrays.fill(row,0);
-             }
-         }
+            }
 
          for (int i=days-1;i>=0;i--)
          {
-            for(int j=0;j<=1;j++)
-            {
-                for(int f=1;f<=k;f++)
+            // for(int j=0;j<=1;j++)
+            // {
+                for(int f=1;f<=2*k;f++)
                 {
-                    if(j==1)
+                    if(f%2==0)
                     {
-                        profit=Math.max(-prices[i]+dp[i+1][0][f],0+dp[i+1][1][f]);
+                        profit=Math.max(-prices[i]+dp[i+1][f-1],0+dp[i+1][f]);
                     }
 
 
                     else
                     {
-                        profit=Math.max(prices[i]+dp[i+1][1][f-1],0+dp[i+1][0][f]);
+                        profit=Math.max(prices[i]+dp[i+1][f-1],0+dp[i+1][f]);
                     }
 
-                    dp[i][j][f]=profit;
-                }
+                    dp[i][f]=profit;
             }
          }
 
-         return dp[0][1][k];
+         return dp[0][2*k];
         
     }
 }
