@@ -3,7 +3,12 @@ class Solution {
     {
          int days=prices.length;
          int profit=0;
-         int[][] dp=new int[days+1][2*k+1];
+        //  int[][] dp=new int[days+1][2*k+1];
+        int[] after=new int[2*k+1];
+        int[] curr=new int[2*k+1];
+        Arrays.fill(after,0);
+        Arrays.fill(curr,0);
+
 
         //  for(int[][] rr:dp)
         //  {
@@ -13,10 +18,10 @@ class Solution {
         //      }
         //  }
 
-        for(int[] row: dp)
-            {
-                Arrays.fill(row,0);
-            }
+        // for(int[] row: dp)
+        //     {
+        //         Arrays.fill(row,0);
+        //     }
 
          for (int i=days-1;i>=0;i--)
          {
@@ -26,20 +31,21 @@ class Solution {
                 {
                     if(f%2==0)
                     {
-                        profit=Math.max(-prices[i]+dp[i+1][f-1],0+dp[i+1][f]);
+                        profit=Math.max(-prices[i]+after[f-1],0+after[f]);
                     }
 
 
                     else
                     {
-                        profit=Math.max(prices[i]+dp[i+1][f-1],0+dp[i+1][f]);
+                        profit=Math.max(prices[i]+after[f-1],0+after[f]);
                     }
 
-                    dp[i][f]=profit;
+                    curr[f]=profit;
             }
+            after=curr;
          }
 
-         return dp[0][2*k];
+         return after[2*k];
         
     }
 }
