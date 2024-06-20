@@ -11,22 +11,14 @@
 class Solution {
     public ListNode middleNode(ListNode head) 
     {
-        double count=0;
-        ListNode current=head;
-        ListNode search=head;
-        while(current.next!=null)
-        {
-            current=current.next;
-            count=count+1;
-        }
+        ListNode fast=head;
+        ListNode slow=head;
 
-        count=Math.ceil(count/2);
-        while(count!=0)
+        while(fast!=null && fast.next!=null)
         {
-            search=search.next;
-            count--;
-        }
-        return search;
-
+            slow=slow.next;
+            fast=fast.next.next;
+        }        
+        return slow;
     }
 }
