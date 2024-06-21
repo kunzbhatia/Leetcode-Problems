@@ -12,14 +12,14 @@
 public class Solution {
     public boolean hasCycle(ListNode head) 
     {
-        ListNode slow_pointer = head, fast_pointer = head;
+        ListNode slow = head, fast = head;
 
-        while (fast_pointer != null && fast_pointer.next != null) 
+        while (fast != null && fast.next != null) 
         {
-            slow_pointer = slow_pointer.next;
-            fast_pointer = fast_pointer.next.next;
+            slow = slow.next;
+            fast = fast.next.next;
 
-            if (slow_pointer == fast_pointer) 
+            if (slow == fast) 
             {
                 return true;
             }
