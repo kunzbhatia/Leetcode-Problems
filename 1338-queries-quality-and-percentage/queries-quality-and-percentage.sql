@@ -7,8 +7,8 @@ round(AVG(rating/position),2) as quality,
 round(AVG(IF(rating < 3, 1, 0)) * 100,2) AS poor_query_percentage
 
 from queries 
-where query_name is NOT NULL
-group by query_name;
+group by query_name
+having query_name is NOT NULL;
 
 -- SELECT 
 --     query_name, 
