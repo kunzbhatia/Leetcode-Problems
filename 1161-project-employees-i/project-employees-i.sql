@@ -2,7 +2,7 @@
 
 
 Select p.project_id  , 
-round(avg(e.experience_years),2) as average_years
+ifnull(round(avg(e.experience_years),2),0) as average_years
 
 from project p
 left join employee e
