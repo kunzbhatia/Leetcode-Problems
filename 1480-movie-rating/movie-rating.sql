@@ -17,7 +17,8 @@ from Movies m
 left join MovieRating mr
 on m.movie_id=mr.movie_id
 
-WHERE DATE_FORMAT(mr.created_at, '%Y%m') = '202002'
+WHERE EXTRACT(YEAR FROM mr.created_at) = 2020 
+  AND EXTRACT(MONTH FROM mr.created_at) = 2
 
 group by m.movie_id
 order by avg(mr.rating) desc ,m.title limit 1)
