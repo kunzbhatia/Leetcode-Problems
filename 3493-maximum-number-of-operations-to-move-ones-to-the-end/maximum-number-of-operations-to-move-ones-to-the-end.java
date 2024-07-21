@@ -1,14 +1,20 @@
 class Solution {
     public int maxOperations(String s) {
-        int n = s.length(), cnt = 0, ans = 0;
-        for (int i = 0; i < n; i++) {
-            if (s.charAt(i) == '0') {
-                ans += cnt;
-                while (i < n && s.charAt(i) != '1') {
+        int n = s.length();
+        int cnt = 0, i = 0;
+        int ans = 0;
+
+        while(i < n) {
+            if(s.charAt(i) == '1') {
+                cnt++;
+                i++;
+            }
+            else if(s.charAt(i) == '0') {
+                while(i < n && s.charAt(i) == '0') {
                     i++;
                 }
+                ans += cnt;
             }
-            cnt++;
         }
         return ans;
     }
